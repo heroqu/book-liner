@@ -16,8 +16,8 @@ This will build and run three containers:
   - main app with business logics
 - content-store
   - file server to store text contents
-- redis
- - backend for key-value storage
+- redis_db
+  - backend for key-value storage
 
 ## API
 
@@ -35,8 +35,6 @@ This will build and run three containers:
   {"result":"upload OK","files":[["sample.txt","dd96142785c4d71a12d31dd9e8b7b685"]]}
   ```
 
-  Multiple files upload is possible.
-
 3. Getting the text back from server:
 
   ```
@@ -48,7 +46,7 @@ This will build and run three containers:
 
   The text response may vary (as no two books are usually exactly the same in terms of their text contents).
 
-4. Splitting previously uploaded book's text into paragraphs (using new line character as delimeter):
+4. Splitting previously uploaded book's text into paragraphs (using new line character as delimiter):
 
   ```
   $ curl -X POST http://localhost:9001/split/dd96142785c4d71a12d31dd9e8b7b685
