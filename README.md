@@ -2,7 +2,7 @@
 
 Content addressable store for texts / books. Support splitting a book into a list of addressable lines / paragraphs.
 
-The goals and concepts behind the server are described in [Ideas section](#Ideas-behind)  near the end of this page.
+The goals and concepts behind the server are described in [Ideas behind section](#ideas-behind) near the end of this page.
 
 ## Running the server
 
