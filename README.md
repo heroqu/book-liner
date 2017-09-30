@@ -44,7 +44,7 @@ This will build and run three containers:
   Raising himself a little, he perceived his wife (a most respectable lady, and one especially fond of coffee) to be just in the act of drawing newly baked rolls from the oven.
   ```
 
-  The text response may vary (as no two books are usually exactly the same in terms of their text contents).
+  The text response may vary as no two books are usually exactly the same, unless they are comics or some other advanced wordless literature.
 
 4. Splitting previously uploaded book's text into paragraphs (using new line character as delimiter):
 
@@ -67,7 +67,6 @@ This will build and run three containers:
   {"result":"Raising himself a little, he perceived his wife (a most respectable lady, and one especially fond of coffee) to be just in the act of drawing newly baked rolls from the oven."}
   ```
 
-
 7. Deleting any entry by its digest:
 
   ```
@@ -86,6 +85,7 @@ The server is designed to store texts in a content-addressable fashion. When one
 
 Another feature is splitting the text (book) into meaningful chunks, e.g. paragraphs, chapters etc. The server currently supports splitting to paragraphs, but this functionality can be extended. Sub-texts are then *related* to the main text in the following manner:
 
+```
 book <-> digest
 
 paragraph1 <-> digest1
@@ -95,17 +95,16 @@ paragraph3 <-> digest3
 ( digest1, paragraph_1, digest )
 ( digest2, paragraph_2, digest )
 ( digest3, paragraph_3, digest )
+```
 
 Here the paragraph_N is the name of Relation, digest_N is Subject, digest (of the book) is Object.
 
-These *triples* are stored in triple store, which is currently using a key-value store with redis backend. There are very advanced triple stores out there, but current setup can be considered a proof of a concept.
+These *triples* are stored in triple-store, which is currently based on key-value store which is based on redis backend. There are very advanced triple stores out there, but current setup can be considered a proof of a concept.
 
-The goal of the this BookLiner is to ease the extracting any Line out of a Book, hence the name.
+One of the goals of the this BookLiner is to ease the extracting any Line out of a Book, hence the name.
 
-Imagine you send a person a short message with a single digest in it. This digest can be a list of N digests, which in turn can means a book each. So one can send an arbitrary set of books/texts with a single short digest, and the receiver will be able to extract everything into original texts providing those texts were stored in the server (or other servers).
+Imagine you send a person a short message with a single digest in it. This digest can be a list of N digests, which in turn can mean a book each. So one can send an arbitrary set of books/texts with a single short digest, and the receiver will be able to extract everything into original texts providing those texts were stored in the server (or other similar content-addressable storage servers using the same hashing algorithm).
 
-This idea can be developed further. One can send any hierarchy of real data with a single digest, and the data can be restored in a predictable deterministic way.
-
-What is limiting you? Only your own imagination.
+This idea can be developed further. One can send any hierarchy of real data with a single digest, and the data can be restored in a predictable deterministic way. Limited by imagination.
 
 This setup demonstrates how easy it is to build a server like that.
