@@ -99,7 +99,6 @@ function ContentStoreAPI () {
             files.push(file)
           }
 
-          console.log(files)
           taskMinus()
         }
       } catch (err) {
