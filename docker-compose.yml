@@ -1,0 +1,36 @@
+version: '2.1'
+
+services:
+  bookliner:
+    build: ./book-liner-mcs/
+    ports:
+      - "9001:8001"
+    volumes:
+      - ./book-liner-mcs:/home/app/bookliner
+      - /home/app/bookliner/node_modules
+    environment:
+     - NODE_ENV=production
+    links:
+      - "redis_db"
+      - "cstore"
+
+  cstore:
+    build: ./content-store-mcs/
+    expose:
+      - "8002"
+    ports:
+      - "9002:8002"
+    volumes:
+      - ./content-store-mcs:/home/app/cstore
+      - /home/app/cstore/node_modules
+    environment:
+     - NODE_ENV=production
+
+  redis_db:
+    image: redis:4
+    volumes:
+      - ./redis_data:/data
+    expose:
+      - "6379"
+    ports:
+      - "7379:6379"

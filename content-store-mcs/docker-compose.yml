@@ -1,0 +1,12 @@
+version: '2.1'
+
+services:
+  store:
+    build: .
+    ports:
+      - 9002:8002
+    volumes:
+      - .:/home/app/cstore
+      - /home/app/cstore/node_modules
+    environment:
+     - NODE_ENV=production

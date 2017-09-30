@@ -1,0 +1,8 @@
+{
+  "env": "development",
+  "port": 8002,
+  "storage_dir": "data",
+  "hash": {
+    "seed": 123
+  }
+}

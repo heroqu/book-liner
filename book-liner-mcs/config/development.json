@@ -1,0 +1,15 @@
+{
+  "env": "development",
+  "port": 8001,
+  "storage_dir": "data",
+  "redis": {
+    "port": "6379",
+    "host": "redis_db"
+  },
+  "content_store": {
+    "url": "http://cstore:8002"
+  },
+  "book_server": {
+    "name": "BookLiner"
+  }
+}

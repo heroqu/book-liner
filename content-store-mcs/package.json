@@ -1,0 +1,28 @@
+{
+  "name": "content-store-mcs",
+  "version": "0.1.0",
+  "description": "Content-store microservice",
+  "main": "index.js",
+  "dependencies": {
+    "config": "^1.26.2",
+    "content-store": "^0.1.3",
+    "metrohash": "^2.3.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "down": "rm -f yarn.lock && rm -rf node_modules",
+    "up": "yarn add config content-store metrohash",
+    "setup": "npm run down && npm run up",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "content store",
+    "file server",
+    "microservice",
+    "upload",
+    "file",
+    "restify"
+  ],
+  "author": "Heroqu",
+  "license": "ISC"
+}
