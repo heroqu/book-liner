@@ -103,15 +103,14 @@ async function BookLiner () {
 
     await addRel(digest, 'paragraphs', paragraphListDigest)
 
-    // the digest of list of paragraphs' digest
+    // the digest of list of paragraphs' digests
     return paragraphListDigest
   }
 
   /**
-  * Get list parapraph's digests
+  * Get list of parapraph's digests
   * The result is a string of digests joined with comma
   */
-
   async function getParagraphList (digest) {
     let paragraphListDigest = await getRel(digest, 'paragraphs')
     return contentStoreAPI.get(paragraphListDigest)
