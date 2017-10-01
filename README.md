@@ -57,7 +57,7 @@ This will build and run three containers:
 
   ```
   $ curl http://localhost:9001/4c2b7e05107a1e7bfe4a0d6c2fa78eb4
-  {"result":"d69dec604e749eb4bc588e26ace096a5\n434e6dec39caa1f465b66e881fb81c21\n34cdd73f3dc048fdeb217bfb3af83f4d"}
+  {"result":"d69dec604e749eb4bc588e26ace096a5,434e6dec39caa1f465b66e881fb81c21,34cdd73f3dc048fdeb217bfb3af83f4d"}
   ```
 
 6. Now having the list of digests of all the paragraphs one can at will get the text of any particular one, e.g. the last most:
@@ -92,12 +92,12 @@ paragraph1 <-> digest1
 paragraph2 <-> digest2
 paragraph3 <-> digest3
 
-( digest1, paragraph_1, digest )
-( digest2, paragraph_2, digest )
-( digest3, paragraph_3, digest )
+( digest, paragraph_1, digest1 )
+( digest, paragraph_2, digest2 )
+( digest, paragraph_3, digest3 )
 ```
 
-Here the paragraph_N is the name of Relation, digest_N is Subject, digest (of the book) is Object.
+Here the paragraph_N is the name of Relation, digest (of the book) is Subject, digest_N is Object.
 
 These *triples* are stored in triple-store, which is currently based on key-value store which is based on redis backend. There are very advanced triple stores out there, but current setup can be considered a proof of a concept.
 

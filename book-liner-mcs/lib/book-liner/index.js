@@ -14,7 +14,6 @@ const String2Stream = require('../string-2-stream')
 module.exports = BookLiner
 
 async function BookLiner () {
-
   const contentStoreAPI = ContentStoreAPI()
 
   const tripleStore = await TripleStore()
@@ -99,7 +98,7 @@ async function BookLiner () {
     )
 
     // Save the list as a standalone entity to the store
-    const paragraphList = partDigests.join('\n')
+    const paragraphList = partDigests.join(',')
     const paragraphListDigest = await contentStoreAPI.put(paragraphList)
 
     await addRel(digest, 'paragraphs', paragraphListDigest)
@@ -108,8 +107,27 @@ async function BookLiner () {
     return paragraphListDigest
   }
 
+  /**
+  * Get list parapraph's digests
+  * The result is a string of digests joined with comma
+  */
+
   async function getParagraphList (digest) {
-    let paraDigest = await getRel(digest, 'paragraphs')
+    let paragraphListDigest = await getRel(digest, 'paragraphs')
+    return contentStoreAPI.get(paragraphListDigest)
+  }
+
+  /**
+  * Get parapraph text by book digest and paragraph index
+  */
+  async function getParagraph (digest, index) {
+    let paragraphList = await getParagraphList(digest)
+    let paragraphDigests = paragraphList.split(',')
+    if (typeof index === 'number' && index >= 0
+        && index < paragraphDigests.length) {
+      let digest = paragraphDigests[index]
+      return contentStoreAPI.get(digest)
+    }
   }
 
   return {
@@ -118,6 +136,7 @@ async function BookLiner () {
     addBook,
     sliceToParagraphs,
     getText,
-    getParagraphList
+    getParagraphList,
+    getParagraph
   }
 }
